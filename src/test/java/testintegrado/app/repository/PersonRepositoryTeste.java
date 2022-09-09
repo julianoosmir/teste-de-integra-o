@@ -15,14 +15,10 @@ import testintegrado.app.entity.Person;
 @DataJpaTest
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@ActiveProfiles("test")
 @TestPropertySource(properties = {"spring.datasource.url=jdbc:postgresql://localhost:5432/teste"})
 public class PersonRepositoryTeste {
     @Autowired
     private PersonRepository personRepository;
-
-
-
     @Test
     public void findAllReturnsJohnDoe() { // as defined in tc-initscript.sql
         Person joao = new Person(null, "jao", 22);
