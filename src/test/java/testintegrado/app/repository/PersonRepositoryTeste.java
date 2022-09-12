@@ -14,19 +14,17 @@ import testintegrado.app.entity.Person;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
+@TestPropertySource(properties = {"spring.datasource.url=jdbc:h2:mem:db;DB_CLOSE_DELAY=-1","spring.datasource.driver-class-name=org.h2.Driver"})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@TestPropertySource(properties = {"spring.datasource.url=jdbc:postgresql://localhost:5432/teste"})
 public class PersonRepositoryTeste {
     @Autowired
     private PersonRepository personRepository;
     @Test
-    public void findAllReturnsJohnDoe() { // as defined in tc-initscript.sql
+    public void findAllReturnsJohnDoe() { // as defined in data.sql
         Person joao = new Person(null, "jao", 22);
         Person maria = new Person(null, "maria", 92);
         joao = personRepository.save(joao);
         maria = personRepository.save(maria);
-
-
 
         var owners = personRepository.findAll();
         Assertions.assertNotNull(owners);
