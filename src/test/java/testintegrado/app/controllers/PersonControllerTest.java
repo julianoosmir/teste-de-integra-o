@@ -1,37 +1,29 @@
 package testintegrado.app.controllers;
 
 
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
-import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
-import testintegrado.app.controller.PersonControllers;
-import testintegrado.app.entity.Person;
-import testintegrado.app.repository.PersonRepository;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
-@AutoConfigureMockMvc
-@Transactional
-@SpringBootTest
-@TestPropertySource(properties = {"spring.datasource.url=jdbc:h2:mem:db;DB_CLOSE_DELAY=-1","spring.datasource.driver-class-name=org.h2.Driver"})
-public class PersonControllerTest {
+import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
+
+import testintegrado.app.abstrato.ControllerTeste;
+import testintegrado.app.controller.PersonControllers;
+import testintegrado.app.entity.Person;
+import testintegrado.app.repository.PersonRepository;
+
+
+public class PersonControllerTest extends ControllerTeste {
     @Autowired
     private MockMvc mockMvc;
     @InjectMocks
