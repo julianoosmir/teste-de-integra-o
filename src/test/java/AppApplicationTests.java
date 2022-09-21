@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
@@ -8,8 +7,6 @@ import org.springframework.test.context.TestPropertySource;
 @TestPropertySource(properties = {"spring.datasource.url=jdbc:postgresql://localhost:5432/teste"})
 class AppApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	
 
 }
